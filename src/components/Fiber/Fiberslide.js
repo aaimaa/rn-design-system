@@ -1,23 +1,27 @@
-import { StyleSheet, TouchableOpacity ,   Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity , Dimensions,  Text, View } from 'react-native';
 // import Swiper from 'react-native-swiper'
 // import Slidee from "./Slidee";
-export default function FiberSlide() {
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
+
+export default function FiberSlide(item) {
     return (
 
+<View style = {styles.CONT}>
       <View style={styles.container}>
         {/* <Text>Mai hoo Fiber slide  </Text> */}
         <View style={styles.price}>
-            <Text style={{fontSize:30 , fontWeight:'bold' , alignSelf:'flex-end'}}>₹399</Text>
+            <Text style={{fontSize:30 , fontWeight:'bold' , alignSelf:'flex-end'}}>{item.p}</Text>
             <Text style = {{fontSize:18 , fontWeight:'medium',alignSelf:'flex-end'}}>+Gst</Text>
         </View>
         <View style = {styles.valdat}>
 <View >
     <Text style= {{}}>Validity</Text>
-    <Text style={{fontSize:15 , fontWeight:'medium'}} >30 Days</Text>
+    <Text style={{fontSize:15 , fontWeight:'medium'}} >{item.v} Days</Text>
 </View>
 <View>
 <Text style= {{}}>Data</Text>
-    <Text style={{fontSize:15 , fontWeight:'medium'}} >Unlimited @30 Mbps</Text>
+    <Text style={{fontSize:15 , fontWeight:'medium'}} >Unlimited @{item.d} Mbps</Text>
 </View>
         </View>
         <TouchableOpacity style ={styles.buttonStyle1}>
@@ -25,19 +29,21 @@ export default function FiberSlide() {
       </TouchableOpacity>
       {/* <Slidee/> */}
       </View>
+      </View>
 
     );
   }
   
   const styles = StyleSheet.create({
+    CONT:{
+      marginTop:10,
+      width:WIDTH*0.8,
+      height:HEIGHT*0.25,
+    },
     container: {
-      flex: 0.4,
-      width:'80%',
+      width:'95%',
       backgroundColor: '#DCDCDC',
-      alignSelf:'center',
       borderRadius:25,
-      justifyContent:'center'
-
     },
     price:{
         width:'80%',
